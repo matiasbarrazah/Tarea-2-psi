@@ -169,4 +169,18 @@ public class BibliotecaTest {
         biblioteca.registrarLibro(libro);
         assertTrue(libro.isDisponible());
     }
+
+    @Test
+    void testListarDisponiblesTodosDisponibles() throws LibroDuplicadoException {
+        Libro libro1 = new Libro("10", "Libro X", "Autor", 2000);
+        Libro libro2 = new Libro("11", "Libro Y", "Autor", 2001);
+        biblioteca.registrarLibro(libro1);
+        biblioteca.registrarLibro(libro2);
+        assertEquals(2, biblioteca.listarDisponibles().size());
+    }
+
+    @Test
+    void testBibliotecaVaciaAlInicio() {
+        assertEquals(0, biblioteca.getTotalLibros());
+    }
 }
